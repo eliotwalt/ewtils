@@ -1,4 +1,4 @@
-import argparse, argcomplete, requests
+import argparse, argcomplete, requests, os, sys
 import tqdm
 
 def arxiv_url(id):
@@ -19,5 +19,6 @@ if __name__=="__main__":
     p.add_argument("--chunk_size", help="buffer size in bytes", required=False, default=2000)
     argcomplete.autocomplete(p)
     args = p.parse_args()
+    if os.path.exists(args.out): print("File exists!\nAbort."); sys.exit(1)
     stream_bytes(args.id, args.out, args.chunk_size)
     
