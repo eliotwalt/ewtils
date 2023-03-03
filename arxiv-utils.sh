@@ -3,6 +3,10 @@ if [[ $action == "stream" ]];
 then
     python `basename "${0%/*}"`/arxiv-utils/stream.py ${@:2}
     exit 0
+elif [[ $action == "search" ]];
+then
+    python `basename "${0%/*}"`/arxiv-utils/search.py ${@:2}
+    exit 0
 else
     echo "invalid action"
     exit 1
