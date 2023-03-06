@@ -9,6 +9,10 @@ elif [[ $action == "search" ]];
 then
     python "$ROOT"/arxiv-utils/search.py ${@:2}
     exit 0
+elif [[ $action == "logs" ]];
+then
+    python "$ROOT"/arxiv-utils/logs.py ${@:2}
+    exit 0
 else
     echo "invalid action"
     exit 1

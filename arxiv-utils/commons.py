@@ -1,5 +1,18 @@
 import arxiv, yaml, os
 
+def read_logs(path):
+    try:
+        with open(path) as f:
+            logs = list(yaml.safe_load(f))
+        return logs
+    except: 
+        print("could not load log file")
+        sys.exit(1)
+
+def write_logs(logs, path):
+    with open(path, "w") as f:
+        yaml.dump(logs, f, sort_keys=False)
+
 def arxiv_url(id):
     return f"https://arxiv.org/pdf/{id}.pdf"
 
@@ -14,16 +27,14 @@ def log_arxiv(pid, log_f):
     print(f"logging {pid} in {log_f}")
     data = describe_paper(pid)
     if os.path.exists(log_f):
-        with open(log_f) as f:
-            logs = list(yaml.safe_load(f))
+        logs = read_logs(log_f)
         for log in logs:
             if "id" in log.keys() and log["id"] == pid: 
                 print("{} already in logs.".format(pid))
                 return None
     else: logs = list()
     logs.append(data)
-    with open(log_f, "w") as f:
-        yaml.dump(logs, f, sort_keys=False)
+    write_logs(log_f, logs)
     return None
 
 def log_not_arxiv(author, title, log_f):
