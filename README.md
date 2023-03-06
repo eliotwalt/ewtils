@@ -12,8 +12,8 @@
 - Search, stream and log a paper from its author and title:
     ```bash
     ./arxiv-utils.sh search \
-        --title '{author}' \
-        --author '{author}' \
+        --title {author} \
+        --author {author} \
         --log {yaml_log_file(optional)} \
         --stream (optional) \
         --chunksize {buffer_size_in_bytes(optional)}

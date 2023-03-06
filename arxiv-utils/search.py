@@ -17,13 +17,15 @@ def search_paper_by_author_and_title(author, title):
     
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("--title", help="Paper title")
+    p.add_argument("--title", help="Paper title", nargs="+")
     p.add_argument("--author", help="Paper author")
     p.add_argument("--stream", help="whether to stream the pdf or not", action="store_true")
     p.add_argument("--chunk_size", help="streaming buffer size in bytes (optional)", required=False, default=2000)
     p.add_argument("--out", help="output file if stream")
     p.add_argument("--log", help="log file (optional)")
     args = p.parse_args()
+    args.title = " ".join(args.title)
+    args.author = " ".join(args.author)
     if args.stream: assert args.out is not None
     pid = search_paper_by_author_and_title(args.author, args.title)
     if pid:
