@@ -12,9 +12,9 @@ def stream_bytes(pid, fn, chunk_size):
         i = 0
         fn_ = copy(fn)
         while os.path.exists(fn_):
-            fn_ = Path(fn).stem+alphabet[i]+".pdf"
+            fn_ = os.path.join(Path(fn).parent, Path(fn).stem+alphabet[i]+".pdf")
             i += 1
-        fn = str(fn_)
+        fn = fn_
         print(f"New filename: {fn_}")
     url = arxiv_url(pid)
     print(f"Stremaing {url} to {fn}...")
