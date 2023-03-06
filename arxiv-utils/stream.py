@@ -1,9 +1,21 @@
 import argparse, argcomplete, requests, os, sys, arxiv, yaml
 import tqdm
 from commons import describe_paper, clean_text, log_arxiv, arxiv_url
+import string
+from copy import copy
+from pathlib import Path
+alphabet = list(string.ascii_lowercase)
 
 def stream_bytes(pid, fn, chunk_size):
-    if os.path.exists(fn): print("File exists!\nAbort."); sys.exit(1)
+    if os.path.exists(fn): 
+        print("File exists! Renaming...")
+        i = 0
+        fn_ = copy(fn)
+        while os.path.exists(fn_):
+            fn_ = Path(fn).stem+alphabet[i]+".pdf"
+            i += 1
+        fn = str(fn_)
+        print(f"New filename: {fn_}")
     url = arxiv_url(pid)
     print(f"Stremaing {url} to {fn}...")
     response = requests.get(url, stream=True)
