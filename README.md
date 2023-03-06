@@ -18,3 +18,7 @@
         --stream (optional) \
         --chunksize {buffer_size_in_bytes(optional)}
     ```
+- (recommended) add alias to `~/.bashrc`:
+    ```
+    alias arxiv-utils="path/to/arxiv-utils.sh
+    ```
