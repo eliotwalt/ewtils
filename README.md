@@ -22,3 +22,14 @@
     ```
     alias arxiv-utils="path/to/arxiv-utils.sh
     ```
+- **TODO**:
+    - [ ] Yaml to actual database
+    - [ ] Change pdf naming scheme: 
+        ```
+        import string
+        parse_string = lambda x: "-".join([p.lower() for p in x.translate(str.maketrans("", "", string.punctuation)).split()])
+        "_".join([
+            parse_string(author),
+            parse_string(title)
+        ])+".pdf"
+        ```
