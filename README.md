@@ -23,7 +23,7 @@
     alias arxiv-utils="path/to/arxiv-utils.sh
     ```
 - **TODO**:
-    - [ ] Yaml to actual database
+    - [ ] Yaml to actual database, [blog post](https://phoenixnap.com/kb/mysql-remote-connection)
     - [ ] Change pdf naming scheme: 
         ```
         import string
