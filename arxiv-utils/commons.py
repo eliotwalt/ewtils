@@ -34,7 +34,7 @@ def log_arxiv(pid, log_f):
                 return None
     else: logs = list()
     logs.append(data)
-    write_logs(log_f, logs)
+    write_logs(logs, log_f)
     return None
 
 def log_not_arxiv(author, title, log_f):
