@@ -29,7 +29,7 @@ then
     fi
     for repo in "${repos[@]}"
     do
-        echo "Pulling $repo..."
+        echo "Pushing $repo..."
         cd $repo
         git add . && git commit -m "$message" && git push
     done
