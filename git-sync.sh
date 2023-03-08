@@ -3,7 +3,7 @@ machine=$2
 message=$3
 if [[ $machine == "--igp" ]]; 
 then 
-    repos=("")
+    repos=("/scratch/ewalt/ewtils" "/scratch/ewalt/euler-utils" "/scratch/ewalt/pdm/literature" "/scratch/ewalt/pdm/rs-uncertainty")
 elif [[ $machine == "--private" ]]; 
 then 
     repos=("/home/eliot/ewtils" "/home/eliot/igp/euler-utils" "/home/eliot/igp/pdm/literature" "/home/eliot/igp/pdm/rs-uncertainty")
