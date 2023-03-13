@@ -1,12 +1,12 @@
-import arxiv, yaml, os
+import arxiv, yaml, os, sys
 
 def read_logs(path):
     try:
         with open(path) as f:
             logs = list(yaml.safe_load(f))
         return logs
-    except: 
-        print("could not load log file")
+    except Exception as e: 
+        print("could not load log file: ", e)
         sys.exit(1)
 
 def write_logs(logs, path):
